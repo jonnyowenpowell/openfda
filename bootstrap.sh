@@ -14,18 +14,18 @@ PYTHON_ENV=$(python -c 'import os,sys;print os.path.realpath(sys.argv[1])' ./_py
 
 PYTHON=$(which python)
 if [[ -n MACHTYPE ]]; then
-  PIP="pip install"
+  PIP="pip2 install"
 else
-  PIP="pip install --user"
+  PIP="pip2 install --user"
 fi
 
-$PIP virtualenv
-$PIP awscli
+sudo -H $PIP virtualenv
 
 # Setup virtualenv if it doesn't exist.
 test -e $PYTHON_ENV || virtualenv -p $PYTHON $PYTHON_ENV
 
 # Install project sources and dependencies into the environment
+$PYTHON_ENV/bin/pip install awscli
 $PYTHON_ENV/bin/pip uninstall -y openfda || true
 $PYTHON_ENV/bin/pip install -U -r  requirements.txt
 $PYTHON_ENV/bin/python setup.py develop
