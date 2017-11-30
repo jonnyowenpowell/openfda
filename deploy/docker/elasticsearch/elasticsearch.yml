@@ -1,33 +1,7 @@
-cluster.name: openfda
-node.master: true
-node.data: true
-index.number_of_shards: 10
-index.number_of_replicas: 2
+cluster.name: "openfda"
+network.host: 0.0.0.0
 
-path.data: /data0/es-data, /data1/es-data, /data2/es-data, /data3/es-data
-path.work: /data0/es-work
-path.logs: /data0/es-log
-
-bootstrap.mlockall: true
-
-network.bind_host: 0.0.0.0
-
-cluster.routing.allocation.node_initial_primaries_recoveries: 32
-cluster.routing.allocation.node_concurrent_recoveries: 32
-
-indices.recovery.max_bytes_per_sec: 1000mb
-indices.store.throttle.max_bytes_per_sec: 1000mb
-indices.recovery.concurrent_streams: 16
-
-
-cloud.aws.region: ${AWS_REGION}
-discovery.type: ec2
-discovery.ec2.ping_timeout: 30s
-discovery.ec2.any_group: false
-discovery.ec2.availability_zones: ${ES_AVAILABILITY_ZONES}
-discovery.ec2.groups: ${ES_SEC_GROUP_ID}
-discovery.ec2.tag.tree: ${CLUSTER_TAG}
-
-discovery.zen.minimum_master_nodes: 2
-discovery.zen.ping.timeout: 30s
-discovery.zen.ping.multicast.enabled: false
+# minimum_master_nodes need to be explicitly set when bound on a public IP
+# set to 1 to allow single node clusters
+# Details: https://github.com/elastic/elasticsearch/pull/17288
+discovery.zen.minimum_master_nodes: 1

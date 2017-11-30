@@ -22,3 +22,4 @@ openfda/log_parsers/aws_logs_stats
 logs
 api/.idea
 watchdog
+package-lock.json

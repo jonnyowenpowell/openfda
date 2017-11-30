@@ -4,8 +4,6 @@ rootLogger: ${es.logger.level}, console, file
 logger:
   # log action execution errors for easier debugging
   action: INFO
-  # reduce the logging for aws, too much is logged under the default INFO
-  com.amazonaws: WARN
 
   # gateway
   #gateway: DEBUG

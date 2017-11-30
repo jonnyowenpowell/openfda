@@ -1,0 +1,16 @@
+version: '3'
+services:
+  elasticsearch:
+    build: 
+      context: .
+    image: elasticsearch
+    container_name: elasticsearch
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - /private/var/elasticsearch:/usr/share/elasticsearch/data
+    ports:
+      - '9200:9200'
+      - '9300:9300'
