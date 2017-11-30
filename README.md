@@ -28,5 +28,5 @@ This repository contains the code which powers all of the `api.fda.gov` end poin
 # Packaging
 
 Run `bootstrap.sh` to download and setup a virtualenv for the `openfda` python package and to download and setup the `openfda-api` node package.
-Then run from the base of the repository `mkdir /private/var/elasticsearch; ln -s /private/var/elasticsearch ./data;'.
+Then run from the base of the repository `mkdir /private/var/elasticsearch; ln -s /private/var/elasticsearch ./data;`.
 Finally run `docker-compose -f ./deploy/docker/elasticsearch/docker-compose.yml up` to launch a local elasticsearch instance.
